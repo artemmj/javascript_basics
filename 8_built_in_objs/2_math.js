@@ -1,0 +1,13 @@
+var x = -25
+console.log(Math.abs(x))
+console.log(Math.max(19, 45))
+console.log(Math.min(19, 45))
+console.log(Math.ceil(9.1))
+console.log(Math.floor(9.9))
+console.log(Math.round(9.1))
+console.log(`Random: ${Math.random()}`)
+console.log(Math.pow(2, 3))
+console.log(Math.sqrt(144))
+console.log(Math.PI)
+console.log(Math.E)
+console.log(Math.LN10)
