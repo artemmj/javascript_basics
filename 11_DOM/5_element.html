@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        #rect {
+            width: 100px;
+            height: 100px;
+            background: #50c878;
+            border: 4px solid silver;
+        }
+    </style>
+</head>
+<body>
+    <div class="article" style="color:red">
+        <h3>Заголовок статьи</h3>
+        <p>Первый абзац</p>
+        <p>Второй абзац</p>
+    </div>
+    <div id="rect"></div>
+<script>
+function getChildren(elem) {
+    for (var i in elem.childNodes) {
+        if (elem.childNodes[i].nodeType === 1) {
+            console.log(elem.childNodes[i].tagName)
+            getChildren(elem.childNodes[i])
+        }
+    }
+}
+var root = document.documentElement
+console.log(root.tagName)
+getChildren(root)
+
+var articleDiv = document.querySelector('div.article')
+console.log(articleDiv.innerText)
+console.log('--------------------')
+console.log(articleDiv.innerHTML)
+
+var styleValue = articleDiv.getAttribute('style')
+console.log("До изменения атрибута: " + styleValue)
+articleDiv.removeAttribute('style')
+articleDiv.setAttribute('style', 'color:blue')
+styleValue = articleDiv.getAttribute('style')
+console.log("После изменения атрибута: " + styleValue)
+
+var rect = document.getElementById('rect')
+console.log("offsetHeight: " + rect.offsetHeight)
+console.log("offsetWidth: " + rect.offsetWidth)
+console.log("clientHeight: " + rect.clientHeight)
+console.log("clientWidth: " + rect.clientWidth)
+var clientRect = rect.getBoundingClientRect()
+console.log("top: " + clientRect.top)
+console.log("bottom: " + clientRect.bottom)
+console.log("left: " + clientRect.left)
+console.log("right: " + clientRect.right)
+</script>
+</body>
+</html>

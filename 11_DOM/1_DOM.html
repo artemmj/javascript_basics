@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="annotation">
+        <p>Аннотация статьи</p>
+    </div>
+    <div class="article">
+        <h3 id="title">Заголовок</h3>
+        <p>Первый абзац</p>
+        <p>Второй абзац</p>
+    </div>
+<script>
+var hElement = document.getElementById('title')
+var pElements = document.getElementsByTagName('p')
+var articleDiv = document.getElementsByClassName('article')[0]
+var elem = document.querySelector('.annotation p')
+ 
+document.write(`Текст заголовка: ${hElement.innerText}<br/>`)
+for (var i = 0; i < pElements.length; i++) {
+    document.write("Текст параграфа: " + pElements[i].innerText + "<br/>")
+}
+document.write(`Текст блока div: ${articleDiv.innerText}<br/>`)
+document.write(`Текст аннотации: ${elem.innerText}`)
+</script>
+</body>
+</html>
