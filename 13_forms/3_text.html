@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<form name="search">
+    <input type="text" name="key" placeholder="Введите ключ"></input>
+    <input type="button" name="print" value="Печать" />
+    <input type="password" name="password" />
+</form>
+<form name="search2">
+    <textarea rows="7" cols="40" name="message"></textarea>
+</form>
+<div id="printBlock"></div>
+<br/>
+<input type="password" name="password" />
+<script>
+var keyBox = document.search.key
+ 
+function onchange(e) {
+    var printBlock = document.getElementById("printBlock")
+    var val = e.target.value
+    printBlock.textContent = val
+}
+
+function onblur(e) {
+    var text = keyBox.value.trim();
+    if(text === "")
+        keyBox.style.borderColor = "red"
+    else
+        keyBox.style.borderColor = "green"
+}
+
+function onfocus(e) {
+    keyBox.style.borderColor = "blue"
+}
+
+keyBox.addEventListener("change", onchange)
+keyBox.addEventListener("blur", onblur)
+keyBox.addEventListener("focus", onfocus)
+
+
+var messageBox = document.search2.message
+
+function onkeypress(e) {
+    var printBlock = document.getElementById('printBlock')
+    var val = String.fromCharCode(e.keyCode)
+    printBlock.textContent += val
+}
+
+function onkeydown(e) {
+    if (e.key === 8) {
+        var printBlock = document.getElementById('printBlock')
+        length = printBlock.textContent.length
+        printBlock.textContent = printBlock.textContent.substring(0, length - 1)
+    }
+}
+
+messageBox.addEventListener('keypress', onkeypress)
+messageBox.addEventListener('keydown', onkeydown)
+</script>
+</body>
+</html>

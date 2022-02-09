@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<form name="myForm">
+    <input type="checkbox" name="enabled"><span>Включить</span>
+    <input type="radio" name="languages" checked="checked" value="Java" /><span>Java</span>
+    <input type="radio" name="languages" value="C#" /><span>C#</span>
+    <input type="radio" name="languages" value="C++" /><span>C++</span>
+</form>
+<div id="printBlock"></div>
+<div id="printBlock2"></div>
+<script>
+var enableBox = document.myForm.enabled
+
+function onclick(e) {
+    var printBlock = document.getElementById('printBlock')
+    var enabled = e.target.checked
+    printBlock.textContent = enabled
+}
+
+enableBox.addEventListener('click', onclick)
+
+function onclick_radio(e) {
+    var printBlock = document.getElementById('printBlock2')
+    var language = e.target.value
+    printBlock.textContent = "Вы выбрали: " + language
+}
+for (var i = 0; i < myForm.languages.length; i++) {
+    myForm.languages[i].addEventListener('click', onclick_radio)
+}
+myForm.languages[2].checked = true
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<form name="myForm">
+    <select name="language" size="5" multiple>
+        <option value="JS" selected="selected">JavaScript</option>
+        <option value="Java">Java</option>
+        <option value="CS">C#</option>
+        <option value="CPP">C++</option>
+    </select>
+    <p><input type="text" name="textInput" placeholder="Введите текст" /></p>
+    <p><input type="text" name="valueInput" placeholder="Введите значение" /></p>
+    <p><input type="button" name="addButton" value="Добавить" />
+    <input type="button" name="removeButton" value="Удалить" /></p>
+</form>
+<div id="selection"></div>
+<script>
+var firstLanguage = myForm.language.options[0]
+document.write("<br/>Index: " + firstLanguage.index + "<br/>")
+document.write("Text: " + firstLanguage.text + "<br/>")
+document.write("Value: " + firstLanguage.value + "<br/>")
+
+
+var addButton = myForm.addButton
+    removeButton = myForm.removeButton
+    languagesSelect = myForm.language
+
+function addOption() {
+    var text = myForm.textInput.value
+    var value = myForm.valueInput.value
+    var newOption = new Option(text, value)
+    languagesSelect.options[languagesSelect.options.length] = newOption
+}
+
+function removeOption() {
+    var selectedIndex = languagesSelect.options.selectedIndex
+    languagesSelect.options[selectedIndex] = null
+}
+ 
+addButton.addEventListener("click", addOption)
+removeButton.addEventListener("click", removeOption)
+
+
+function changeOption() {
+    var selection = document.getElementById('selection')
+    var selectedOption = languagesSelect.options[languagesSelect.selectedIndex]
+    selection.textContent = 'Вы выбрали: ' + selectedOption.text +
+                            "; Index: " + selectedOption.index +
+                            "; Text: " + selectedOption.text +
+                            "; Value: " + selectedOption.value
+}
+
+languagesSelect.addEventListener('change', changeOption)
+</script>
+</body>
+</html>
