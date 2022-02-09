@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<form name="search" id="name_form">
+    <input type="text" name="key" value="initial value"></input>
+    <input type="submit" name="send"></input>
+</form>
+<br/>
+<form name="settings" id="settings_from"></form>
+<script>
+var searchForm = document.getElementById('settings_from')
+document.write(searchForm.name + '<br/>')
+for (var i = 0; i < document.forms.length; i++) {
+    if (document.forms[i].name === "search")
+        searchForm = document.forms[i]
+}
+document.write(searchForm.name + '<br/><br/>')
+
+searchForm = document.forms['search']
+for (var i = 0; i < searchForm.elements.length; i++) {
+    document.write(searchForm.elements[i].name + '<br/>')
+}
+
+var keyBox = searchForm.elements['key']
+document.write(keyBox.value + '<br/><br/>')
+keyBox.value = 'New value'
+
+document.write(keyBox.form.name)
+keyBox.focus()
+</script>
+</body>
+</html>
