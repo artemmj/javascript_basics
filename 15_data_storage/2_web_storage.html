@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+localStorage.setItem('login', 'tom32')
+var login = localStorage.getItem('login')
+localStorage.removeItem('login')
+localStorage.clear()
+
+localStorage.setItem('age', 23)
+var age = localStorage.getItem('age')
+document.write(parseInt(age) + '<br/><br/>')
+
+var user = {
+    name: 'Tom',
+    age: 23,
+    married: false,
+}
+localStorage.setItem('user', JSON.stringify(user))
+var savedUser =  JSON.parse(localStorage.getItem('user'))
+document.write(JSON.stringify(savedUser) + '<br/>')
+document.write(savedUser.name)
+</script>
+</body>
+</html>
