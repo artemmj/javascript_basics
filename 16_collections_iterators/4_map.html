@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+const myMap = new Map([[1, 111], [2, 222], ['qwe', 'asd'], ['zxc', 'rty']])
+console.log(myMap)
+myMap.set(3, 333)
+console.log(myMap.get(1))
+console.log(myMap.get(4))
+console.log(myMap.has(4))
+myMap.delete(1)
+console.log(myMap)
+
+myMap.forEach(function(val1, val2, map) {
+    console.log(val1, val2, map)
+})
+</script>
+</body>

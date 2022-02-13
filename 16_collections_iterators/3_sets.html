@@ -4,5 +4,21 @@
 </head>
 <body>
 <script>
+const arr = [1, 1, 2, 2, 3, 3, 4, 4]
+nums_set = new Set(arr)
+console.log(nums_set)
+nums_set.add(5)
+is_deleted = nums_set.delete(6)
+console.log(is_deleted)
+console.log(nums_set.has(3))
+nums_set.forEach(function(val1, val2, set) {
+    console.log(val1, val2, set)
+})
+
+
+var str_set = new Set(['qwe', 'asd', 'zxc'])
+console.log(str_set.values())
+console.log(str_set.keys())
+console.log(str_set.entries())
 </script>
 </body>

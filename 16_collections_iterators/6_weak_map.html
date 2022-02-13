@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+const weakMap1 = new WeakMap()
+ 
+let key1 = {key:1}
+let key2 = {key:2}
+let value1 = {name: "Tom"}
+let value2 = {name: "Sam"}
+  
+const weakMap2 = new WeakMap([[key1, value1], [key2, value2]])
+
+
+let jsCode = {code: "js"}
+    tsCode = {code: "ts"}
+let js = {lang: "JavaScript"}
+    ts = {lang: "TypeScript"}
+const weakMap = new WeakMap([[jsCode, js], [tsCode, ts]])
+ 
+jsCode = null;
+ 
+console.log(weakMap)
+console.log("Некоторая работа")
+const timerId = setTimeout(function(){
+    console.log(weakMap)
+    clearTimeout(timerId)
+}, 10000)
+</script>
+</body>
