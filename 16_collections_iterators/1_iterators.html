@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+const people = ['Tom', 'Bob', 'Sam']
+for (const person of people) {
+    console.log(person)
+}
+var items = people.entries()
+console.log(items.next())
+console.log(items.next())
+console.log(items.next())
+console.log(items.next())
+
+var items = people.entries()
+while (!(item = items.next()).done) {
+    console.log(item.value)
+}
+
+
+const iterableObj = {
+    [Symbol.iterator]() {
+        return {
+            current: 1,
+            end: 3,
+
+            next() {
+                if (this.current <= this.end) {
+                    return { value: this.current++, done: false }
+                }
+                return { done: true }
+            }
+        }
+    }
+}
+const myIterator = iterableObj[Symbol.iterator]()
+console.log(myIterator.next())
+console.log(myIterator.next())
+console.log(myIterator.next())
+console.log(myIterator.next())
+
+for (const value of iterableObj) {
+    console.log(value)
+}
+
+
+const teamIterator = {
+    [Symbol.iterator]() {
+        return {
+            index: 0,
+            members: ['Tom', 'Sam', 'Jack', 'Wolf'],
+            next() {
+                if (this.index < this.members.length) {
+                    return { value: this.members[this.index++], done: false }
+                }
+                return { done: true }
+            }
+        }
+    }
+}
+for (const member of teamIterator) {
+    console.log(member)
+}
+</script>
+</body>

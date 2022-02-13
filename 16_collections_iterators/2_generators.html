@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+function* getNumber(numbers) {
+    for (const elem of numbers) {
+        yield elem
+    }
+}
+const numbers = [1, 22, 333, 4444, 55555]
+const numberGenerator = getNumber(numbers)
+var next = numberGenerator.next()
+console.log(next)
+next = numberGenerator.next()
+console.log(next)
+
+
+function* points() {
+    let x = 0
+    let y = 0
+    while (true) {
+        yield {x: x, y: y}
+        x += 2
+        y += 1
+    }
+}
+points_generator = points()
+i = 0
+for (point of points_generator) {
+    console.log(point)
+    i++
+    if (i === 5)
+        break
+}
+points_generator.return()
+
+
+function* generateData() {
+    try {
+        yield 'Tom'
+        yield 'Bob'
+        yield 'hello world'
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+const personGenerator = generateData()
+console.log(personGenerator.next())
+personGenerator.throw('system error')
+console.log(personGenerator.next())
+</script>
+</body>
