@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+const promise1 = new Promise((resolve, reject) => {
+    reject('ERROR')
+    setTimeout(resolve, 1000, 'promise1')
+})
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 500, 'promise2')
+})
+
+promise1.then(value => console.log(value))
+promise2.then(value => console.log(value))
+
+Promise.all([promise1, promise2])
+    .then(values => {
+        const [promise1data, promise2data] = values
+        console.log(promise1data, promise2data)
+    })
+
+Promise.allSettled([promise1, promise2])
+    .then(values => {
+        const [promise1data, promise2data] = values
+        console.log(promise1data)
+        console.log(promise2data)
+    })
+</script>
+</body>

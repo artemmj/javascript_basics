@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+async function* generatePersonAsync() {
+    yield 1
+    yield 2
+    yield 3
+}
+async function printPeopleAsync() {
+    const peopleGenerator = generatePersonAsync()
+    for await (person of peopleGenerator) {
+        console.log(person)
+    }
+}
+printPeopleAsync()
+
+
+async function* generatePersonAsync2(people) {
+    for (const person of people) {
+        yield await new Promise(
+            resolve => setTimeout(() => resolve(person), 2000)
+        )
+    }
+}
+async function printPeopleAsync2(people) {
+    for await (const item of generatePersonAsync2(people)) {
+        console.log(item)
+    }
+}
+printPeopleAsync2(['qwe', 'asd', 'zxc', 'rty', 'fgh', 'vbn'])
+</script>
+</body>
